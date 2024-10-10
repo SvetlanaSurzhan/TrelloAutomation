@@ -1,3 +1,4 @@
+/// <reference types="cypress" />
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +24,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginToApplication', () => {
+    // const userCredentials = {
+    //     "user": {
+    //         "email": "lanatest55@gmail.com",
+    //         "password": "DnxCnr3x-Nxd9Z+"
+    //     }
+    // }
+
+    // cy.request('POST', 'https://id.atlassian.com/login', userCredentials)
+    // .its()
+
+    cy.visit('/')
+    cy.contains('Log in').click()
+    cy.wait(500)
+    cy.get('#username').type('lanatest55@gmail.com')
+    cy.contains('Continue').click()
+    cy.get('#password').type('DnxCnr3x-Nxd9Z+')
+    cy.contains('Log in').click()
+
+})
